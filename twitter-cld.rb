@@ -3,6 +3,7 @@
 require 'rubygems'
 require 'commander/import'
 require 'lib/kermit_client'
+require 'lib/fnord_metric_app.rb'
 
 program :version, '1.0'
 program :description, 'Combination of kermit and CLD gems to perform language detection on tweets using Google CLD\'s bindings to Ruby'
@@ -20,6 +21,16 @@ command :start do |c|
     client.websocket_host = options.websocket_host || 'localhost'
     client.websocket_port = options.websocket_port || '8000'
     client.start
+  end
+end
+
+command :metrics do |c|
+  c.syntax = 'Twitter CLD metrics'
+  c.summary = 'Starts the fnordmetric app'
+  c.description = 'Starts the fnordmetric app'
+  c.action do |args, options|
+    metrics_app = FnordMetricApp.new
+    metrics_app.start
   end
 end
 

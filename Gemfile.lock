@@ -40,4 +40,5 @@ PLATFORMS
 
 DEPENDENCIES
   cld
+  commander
   kermit

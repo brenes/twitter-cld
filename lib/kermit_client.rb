@@ -5,7 +5,7 @@ require 'cld'
 # Kermit Client wich will connect to the kermit websocket server
 class KermitClient
 
-  attr_accessor :websocket_host, :websocket_port, :language_tweets
+  attr_accessor :websocket_host, :websocket_port, :language_tweets, :metrics_api
 
   # Starts the WebSocket client to consume the tweets
   def start
@@ -13,6 +13,7 @@ class KermitClient
     EventMachine.run do
 
       self.language_tweets = {}
+      self.metrics_api = FnordMetric::API.new
 
       puts '='*80, "Connecting to websockets server at ws://#{websocket_host}:#{websocket_port}", '='*80
 
@@ -34,6 +35,7 @@ class KermitClient
         language_tweets[language] ||= 0
         language_tweets[language] += 1
 
+        metrics_api.event(:_type => :tweet_processed, :language => cld_info[:name], :reliable => cld_info[:reliable])
         puts language_tweets.sort_by{|key, value| -value }.inspect
 
       end

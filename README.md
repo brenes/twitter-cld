@@ -46,3 +46,8 @@ If we have modified webscokets server's host or port we must set the new values 
 ruby twitter-cld.rb help
 ```
 
+And if you want to check the fnordmetrics integration, just run
+
+```
+ruby twitter-cld.rb metrics
+```

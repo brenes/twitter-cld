@@ -1,0 +1,43 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.3.2)
+    cld (0.6.0)
+      ffi
+    commander (4.1.2)
+      highline (~> 1.6.11)
+    em-http-request (0.2.7)
+      addressable (>= 2.0.0)
+      eventmachine (>= 0.12.9)
+    em-websocket (0.3.8)
+      addressable (>= 2.1.1)
+      eventmachine (>= 0.12.9)
+    eventmachine (1.0.0)
+    ffi (1.1.5)
+    highline (1.6.15)
+    http_parser.rb (0.5.3)
+    json (1.7.5)
+    kermit (1.0.4)
+      commander (~> 4.1.2)
+      em-http-request (= 0.2.7)
+      em-websocket (~> 0.3.8)
+      json (~> 1.7.3)
+      rake (~> 0.9.2.2)
+      redis (~> 3.0.1)
+      settingslogic (~> 2.0.8)
+      twitter-stream (~> 0.1.16)
+    rake (0.9.2.2)
+    redis (3.0.2)
+    settingslogic (2.0.8)
+    simple_oauth (0.1.9)
+    twitter-stream (0.1.16)
+      eventmachine (>= 0.12.8)
+      http_parser.rb (~> 0.5.1)
+      simple_oauth (~> 0.1.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  cld
+  kermit

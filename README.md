@@ -1,6 +1,6 @@
 # Twitter language detection
 
-This project aims to mix 'kermit' and 'cld' gems to accomplish an awesome goal, performing real language detection over tweets using Google Chrome's compact language detection library.
+This project aims to mix [kermit](http://rubygems.org/gems/cld) and [cld](http://rubygems.org/gems/cld) gems to accomplish an awesome goal, performing real language detection over tweets using Google Chrome's compact language detection library.
 
 ## What does it do?
 

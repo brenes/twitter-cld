@@ -1,14 +1,18 @@
 require 'em-http'
+require 'json'
+require 'cld'
 
 # Kermit Client wich will connect to the kermit websocket server
 class KermitClient
 
-  attr_accessor :websocket_host, :websocket_port
+  attr_accessor :websocket_host, :websocket_port, :language_tweets
 
   # Starts the WebSocket client to consume the tweets
   def start
 
     EventMachine.run do
+
+      self.language_tweets = {}
 
       puts '='*80, "Connecting to websockets server at ws://#{websocket_host}:#{websocket_port}", '='*80
 
@@ -23,7 +27,15 @@ class KermitClient
       end
 
       http.stream do |msg|
-        puts msg
+        tweet = JSON.parse(msg)
+        cld_info = CLD.detect_language(tweet['text'])
+
+        language = cld_info[:reliable] ? cld_info[:name] : "unreliable"
+        language_tweets[language] ||= 0
+        language_tweets[language] += 1
+
+        puts language_tweets.sort_by{|key, value| -value }.inspect
+
       end
 
     end
